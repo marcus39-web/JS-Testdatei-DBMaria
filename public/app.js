@@ -156,10 +156,32 @@ function displayUsers(users) {
 // Funktion zum Speichern eines Benutzers (Erstellen oder Aktualisieren)
 function saveUser() {
     const userId = $('#userId').val();
+    const name = $('#name').val().trim();
+    const email = $('#email').val().trim();
+    const age = $('#age').val();
+
+    // Validierung
+    if (!name) {
+        showMessage('Bitte geben Sie einen Namen ein', 'error');
+        return;
+    }
+    
+    if (!email) {
+        showMessage('Bitte geben Sie eine E-Mail-Adresse ein', 'error');
+        return;
+    }
+    
+    // E-Mail-Format validieren
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showMessage('Bitte geben Sie eine gültige E-Mail-Adresse ein', 'error');
+        return;
+    }
+
     const userData = {
-        name: $('#name').val(),
-        email: $('#email').val(),
-        age: $('#age').val() || null
+        name: name,
+        email: email,
+        age: age || null
     };
 
     const isEdit = userId !== '';

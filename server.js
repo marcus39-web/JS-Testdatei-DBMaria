@@ -37,6 +37,17 @@ try {
 // Datenbank-Verbindungspool erstellen
 const pool = mysql.createPool(config.database);
 
+// Datenbankverbindung testen beim Start
+pool.getConnection()
+  .then(connection => {
+    console.log('✓ Datenbankverbindung erfolgreich hergestellt');
+    connection.release();
+  })
+  .catch(err => {
+    console.error('✗ Fehler bei der Datenbankverbindung:', err.message);
+    console.error('Bitte überprüfen Sie die Konfiguration in config.js');
+  });
+
 // XML Builder
 const xmlBuilder = new xml2js.Builder({ 
   rootName: 'response',
