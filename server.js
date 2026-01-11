@@ -46,6 +46,46 @@ app.post('/daten', async (req, res) => {
         res.status(500).send('Fehler: ' + err.message);
     } finally {
         if (conn) conn.release();
+
+    }
+});
+
+// Datensatz löschen
+app.delete('/daten/:id', async (req, res) => {
+    let conn;
+    try {
+        const id = req.params.id;
+        conn = await pool.getConnection();
+        const result = await conn.query('DELETE FROM personen WHERE id = ?', [id]);
+        if (result.affectedRows === 0) {
+            res.status(404).send('Datensatz nicht gefunden');
+        } else {
+            res.send('Datensatz gelöscht');
+        }
+    } catch (err) {
+        res.status(500).send('Fehler: ' + err.message);
+    } finally {
+        if (conn) conn.release();
+    }
+});
+
+// Datensatz ändern (hier nur Name, kann erweitert werden)
+app.put('/daten/:id', async (req, res) => {
+    let conn;
+    try {
+        const id = req.params.id;
+        const { name } = req.body;
+        conn = await pool.getConnection();
+        const result = await conn.query('UPDATE personen SET name = ? WHERE id = ?', [name, id]);
+        if (result.affectedRows === 0) {
+            res.status(404).send('Datensatz nicht gefunden');
+        } else {
+            res.send('Datensatz geändert');
+        }
+    } catch (err) {
+        res.status(500).send('Fehler: ' + err.message);
+    } finally {
+        if (conn) conn.release();
     }
 });
 
