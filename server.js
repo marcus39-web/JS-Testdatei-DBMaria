@@ -3,14 +3,25 @@ const mysql = require('mysql2/promise');
 const xml2js = require('xml2js');
 const cors = require('cors');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
+
+// Rate Limiting für API-Endpunkte
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 Minuten
+  max: 100, // Max 100 Anfragen pro windowMs
+  message: { success: false, error: 'Zu viele Anfragen, bitte versuchen Sie es später erneut.' }
+});
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+// Rate Limiter auf API-Routen anwenden
+app.use('/api/', apiLimiter);
 
 // Konfiguration laden (oder Standard verwenden)
 let config;

@@ -17,6 +17,7 @@ Dieses Projekt ist eine vollständige Übungsanwendung, die folgende Technologie
 - ✅ XML-Parsing und -Anzeige
 - ✅ Echtzeit-Statistiken
 - ✅ Fehlerbehandlung und Validierung
+- ✅ Rate Limiting für API-Sicherheit (100 Anfragen pro 15 Minuten)
 
 ## Voraussetzungen
 - Node.js (Version 14 oder höher)
@@ -124,6 +125,7 @@ JS-Testdatei-DBMaria/
 - **mysql2** - MySQL/MariaDB Client für Node.js
 - **xml2js** - XML-Builder für Node.js
 - **cors** - Cross-Origin Resource Sharing
+- **express-rate-limit** - API Rate Limiting
 
 ### Frontend
 - **jQuery 3.6.0** - JavaScript-Bibliothek
