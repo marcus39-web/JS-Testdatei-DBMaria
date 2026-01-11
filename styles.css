@@ -1,0 +1,101 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #234567;
+    font-size: 2.7em;
+    margin: 48px auto 32px auto;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-shadow: 0 2px 8px #b0c4de44;
+}
+
+form#addForm {
+    margin: 0 auto 36px auto;
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    max-width: 950px;
+}
+
+form#addForm input[type="text"] {
+    padding: 14px;
+    font-size: 1.15em;
+    width: 240px;
+    border-radius: 8px;
+    border: 1.5px solid #b0c4de;
+    background: #fafdff;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px #e0eafc44;
+}
+
+form#addForm input[type="text"]:focus {
+    border: 2px solid #2980b9;
+    background: #fff;
+    outline: none;
+    box-shadow: 0 2px 8px #b0c4de88;
+}
+
+form#addForm button {
+    padding: 14px 32px;
+    font-size: 1.15em;
+    background: linear-gradient(90deg, #2980b9 60%, #6dd5fa 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 2px 8px #b0c4de44;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+form#addForm button:hover {
+    background: linear-gradient(90deg, #1a5e8a 60%, #2980b9 100%);
+    box-shadow: 0 4px 16px #b0c4de88;
+}
+
+#ausgabe {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 950px;
+    background: #fff;
+    box-shadow: 0 4px 24px #b0c4de55;
+    font-size: 1.18em;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 18px 22px;
+    border-bottom: 1px solid #e1e1e1;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(90deg, #2980b9 60%, #6dd5fa 100%);
+    color: #fff;
+    font-size: 1.18em;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background: #f2f8fc;
+}
+
+tr:hover {
+    background: #e3f0fa;
+    transition: background 0.2s;
+}
